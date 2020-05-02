@@ -1,0 +1,59 @@
+body {
+    background-color: #959DFF;
+}
+
+table {
+    margin: auto;
+    width: 600px;
+    height: 600px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 450%;
+    margin-top: 0;
+
+}
+td {
+    width: 100px;
+    height: 100px;
+    padding: 0;
+}
+
+.vertical {
+    border-left: 6px solid #FF959D;
+    border-right: 6px solid #FF959D;
+    
+   
+
+}
+
+.horizontal {
+    border-top: 6px solid #FF959D;
+    border-bottom: 6px solid #FF959D;
+
+}
+
+.wrapper {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.button {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    margin: 15px;
+    font-family: 'Raleway', sans-serif;
+    border: 1px solid black;
+    font-size: 15px;
+}
+
+td {
+    font-size: 80px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
