@@ -6,6 +6,17 @@ var tds = document.querySelectorAll("td");
 var X = document.getElementById("X");
 var O = document.getElementById("O");
 
+
+var oddNumber = [1,3,5,7];
+var evenNumber = [2,4,6,8];
+// for(i = 1; i < 9; i++){
+//    var turn = i
+//  if(turn === oddNumber) {
+//    firstPlayer()
+//  else if(turn === evenNumber)
+//    secondPlayer()
+//}
+
 var human;
 var computer;
 
@@ -16,7 +27,14 @@ X.style.color = "black";
 human = firstPlayer;
 computer = secondPlayer;
 
+function restartGame() {
+    for(i = 0; i < tds.length; i++) {
+        tds[i].innerHTML = ""
+    }
+}
+
 X.addEventListener("click", function() {
+    restartGame();
     X.style.color = "black";
     O.style.color = "#40468C";
     human = firstPlayer;
@@ -24,18 +42,20 @@ X.addEventListener("click", function() {
 })
 
 O.addEventListener("click", function() {
+    restartGame();
     O.style.color = "black";
     X.style.color = "#40468C";
     human = secondPlayer;
     computer = firstPlayer;
+    setTimeout(computerTurn(), 30000);
 
 
 })
 
  function computerTurn() {
-    var computerChoice = Math.floor(Math.random() * 8);
+    var computerChoice = Math.floor(Math.random() * 9);
      while(tds[computerChoice].innerHTML !== "") {
-        computerChoice = Math.floor(Math.random() * 8);
+        computerChoice = Math.floor(Math.random() * 9);
      }
      tds[computerChoice].innerHTML = computer;
      if (isWinner(computer) === true) {
@@ -46,18 +66,22 @@ O.addEventListener("click", function() {
 
 function cellClicked(cell)
 {
-    console.log(cell)
     cell.innerHTML = human;
+
     if (isWinner(human) === true) {
         displayWinner(human);
         return
-    }
-    computerTurn()
 
+    }else if (isDraw() === true){
+        console.log("The game is a draw");
+        return
+
+    }else {computerTurn()}
+    
 }
 
 function displayWinner(player) {
-    console.log("You won", player)
+    console.log("You won", player);
 }
 
 
@@ -85,10 +109,17 @@ for(var i = 0; i < tds.length; i++)
 
 });
 }
-// td.addEventListener("click", function() {
-//     cellClicked(this)
 
-// });
+function isDraw() {
+    if((isWinner(human) || isWinner(computer))) {
+        return false;
+    }
 
+    for(var i = 0; i < tds.length; i++) {
+        x = tds[i]
+        if(x.innerHTML === "") {
+            return false;
 
-
+        }
+    }return true;
+}
